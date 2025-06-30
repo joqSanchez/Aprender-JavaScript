@@ -25,3 +25,4 @@ if (!usuario) {// como es false lo invierte a true
 } else {
   console.log("El usuario SÍ ha iniciado sesión.");
 }
+
