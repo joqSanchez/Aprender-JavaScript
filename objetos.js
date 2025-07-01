@@ -66,8 +66,29 @@ let persona = {
         this.amigos.forEach((amigo) => {
             console.log("Hola soy: " + this.nombre , " y mi amigo es:" + amigo);
         });// De esta forma se usa la funcion flecha con this porque this esta siendo heredado de otra funcion
-            
+
+
+    /*listarAmigos: () => {
+      for(let i = 0; i < persona.amigos.lenght; i++){
+        console.log("Hola soy: " + persona.nombre , " y mi amigo es:" + persona.amigos[i]);
+      }
+        
+    }*/
+      
         
     }
 }
 persona.listarAmigos();
+
+
+let usuario = {
+  nombre: "joqsan",
+  tareas: ["Limpiar la cama","Hacer la tarea","Hacer la comida"],
+  mostrarTarea: function(){
+    this.tareas.forEach((tarea) => {
+      console.log(this.nombre,"debe: " + tarea)
+    })
+  }
+}
+
+usuario.mostrarTarea();
