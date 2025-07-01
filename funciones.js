@@ -45,3 +45,22 @@ function hacerTarea(tarea, callback) {
 }
 
 teDejoTarea("hacer la cama", notificarFin);//
+
+/*"hacer la cama" se pasa a teDejoTarea(tarea, callback)
+
+teDejoTarea la pasa a hacerTarea(tarea, callback)
+
+hacerTarea la imprime y luego llama a callback(tarea)
+
+Eso ejecuta notificarFin("hacer la cama")
+
+ */
+/// esto servira para
+
+/* Enviar un formulario y luego → mostrar un mensaje
+
+🎮 Jugar un nivel y luego → mostrar “¡Nivel completado!”
+
+📦 Pedir datos al servidor y luego → procesarlos
+
+Todo eso usa valores + callbacks. */
