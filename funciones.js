@@ -64,3 +64,21 @@ Eso ejecuta notificarFin("hacer la cama")
 📦 Pedir datos al servidor y luego → procesarlos
 
 Todo eso usa valores + callbacks. */
+
+
+
+
+
+            //callback es una funcion que se pasa como argumento a otra funcion y luego se ejecuta dentro de esa funcion
+
+function mostrarProducto(nombre,precio){
+  console.log("Producto:" + nombre)
+  console.log("Precio:" + precio)
+}
+
+function procesarProducto(nombre,precio,callback){
+  callback(nombre,precio)
+}
+
+
+procesarProducto("Celular", 500, mostrarProducto);

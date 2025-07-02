@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Codificación de caracteres en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para hacer que se vea bien en móviles -->
+    <title>Document</title> <!-- Título de la pestaña del navegador -->
+</head>
+<body>
+
+    <!-- Tarjeta que contiene la imagen -->
+    <div class="card">
+        <img src="./imagen1.webp" alt="chrome logo"> <!-- Imagen dentro de la tarjeta -->
+    </div>
+
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            display: flex; /* Usamos flexbox para alinear el contenido */
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            height: 100vh; /* Ocupa el 100% de la altura de la ventana del navegador */
+            margin: 0; /* Elimina los márgenes por defecto */
+            background: linear-gradient(135deg, #1f1c2c, #928dab); /* Fondo con degradado diagonal */
+        }
+
+        .card {
+            width: 250px; /* Ancho fijo de la tarjeta */
+            height: 250px; /* Alto fijo de la tarjeta */
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+            border-radius: 20px; /* Esquinas redondeadas */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4); /* Sombra con desenfoque */
+            backdrop-filter: blur(10px); /* Desenfoque del fondo detrás de la tarjeta */
+            overflow: hidden; /* Oculta el contenido que se desborde */
+            transform-style: preserve-3d; /* Habilita transformaciones 3D para los hijos */
+            transition: transform 0.1s ease; /* Transición suave para las rotaciones */
+            perspective: 100px; /* Da profundidad al efecto 3D */
+            display: flex; /* Flexbox interno */
+            justify-content: center; /* Centra horizontalmente el contenido (la imagen) */
+            align-items: center; /* Centra verticalmente el contenido (la imagen) */
+        }
+
+        .card img {
+            width: 100%; /* Imagen ocupa todo el ancho de la tarjeta */
+            height: auto; /* La altura se ajusta automáticamente para mantener proporción */
+            pointer-events: none; /* La imagen no interfiere con eventos del mouse */
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script>
+        // Seleccionamos el elemento con clase "card"
+        const card = document.querySelector('.card');
+
+        // Evento que se dispara cuando el mouse se mueve sobre la tarjeta
+        card.addEventListener('mousemove', (e) => {
+            // Obtenemos las coordenadas y dimensiones de la tarjeta
+            const rect = card.getBoundingClientRect();
+
+            // Calculamos la posición del mouse dentro de la tarjeta
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Calculamos el centro de la tarjeta
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Calculamos la rotación en X e Y dependiendo de la distancia desde el centro
+            const rotateX = ((y - centerY) / centerY) * 18; // Gira más si el mouse está más lejos del centro vertical
+            const rotateY = ((x - centerX) / centerX) * 18; // Gira más si el mouse está más lejos del centro horizontal
+
+            // Aplicamos la transformación 3D a la tarjeta
+            card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        // Evento que se dispara cuando el mouse sale de la tarjeta
+        card.addEventListener('mouseleave', () => {
+            // Restablecemos la tarjeta a su posición original (sin rotación)
+            card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
+</body>
+</html>
