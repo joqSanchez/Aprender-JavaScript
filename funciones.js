@@ -82,3 +82,6 @@ function procesarProducto(nombre,precio,callback){
 
 
 procesarProducto("Celular", 500, mostrarProducto);
+
+
+
